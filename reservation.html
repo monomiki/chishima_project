@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>予約ページ | 千島project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #f8f7f3; --text: #202020; --line: #202020; --muted: #6b6b6b; --surface: #ffffff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: "Noto Sans JP", "Noto Sans", sans-serif; font-weight: 400; line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+    .page { width: min(880px, calc(100% - 32px)); margin: 0 auto; padding: 44px 0 72px; }
+    .back { display: inline-block; margin-bottom: 44px; color: var(--muted); font-size: 14px; }
+    h1 { margin: 0 0 32px; font-size: 36pt; font-weight: 400; line-height: 1.3; letter-spacing: 0; }
+    .form-box { margin-bottom: 24px; border: 2px solid var(--line); background: var(--surface); padding: 22px; }
+    .form-box p { margin: 0 0 16px; color: var(--muted); }
+    .dummy-button { display: inline-block; border: 2px solid var(--line); padding: 10px 18px; background: var(--bg); }
+    .dummy-button:hover { background: #eeeeea; }
+    .sheet-link { display: inline-block; margin-left: 12px; color: var(--muted); font-size: 14px; }
+    .flow { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; counter-reset: flow; }
+    .flow li { counter-increment: flow; border: 2px solid var(--line); background: var(--surface); padding: 22px; }
+    .flow li::before { content: counter(flow); display: inline-grid; place-items: center; width: 30px; height: 30px; margin-right: 10px; border: 2px solid var(--line); }
+    .flow-title { font-size: 20px; }
+    .flow-text { display: block; margin-top: 10px; color: var(--muted); }
+    @media (max-width: 760px) { h1 { font-size: 34px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="index.html">← メインページへ戻る</a>
+    <h1>予約ページ</h1>
+    <div class="form-box">
+      <p>予約希望はGoogleフォームで受け付ける想定です。公開時には、この仮ボタンを実際のGoogleフォームURLに差し替えます。</p>
+      <a class="dummy-button" href="#" aria-disabled="true">Googleフォームで予約する（準備中）</a>
+      <a class="sheet-link" href="spreadsheets/chishima-reservation-template.xlsx">予約管理シート雛形</a>
+    </div>
+    <ol class="flow">
+      <li><span class="flow-title">支援プランを確認</span><span class="flow-text">1500yen以上の支援者を予約対象とする想定です。</span></li>
+      <li><span class="flow-title">Googleフォーム入力</span><span class="flow-text">日程、人数、支払い方法、連絡先、住所、重複時の希望を入力します。</span></li>
+      <li><span class="flow-title">スプレッドシートへ自動記録</span><span class="flow-text">フォーム回答を予約管理シートに集約します。</span></li>
+      <li><span class="flow-title">予約確認カレンダー</span><span class="flow-text">希望日と重複を確認し、必要に応じて調整します。</span></li>
+      <li><span class="flow-title">メール送信</span><span class="flow-text">予約希望の内容をメールで送信します。</span></li>
+    </ol>
+  </main>
+</body>
+</html>

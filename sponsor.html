@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>支援プラン | 千島project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #f8f7f3; --text: #202020; --line: #202020; --muted: #6b6b6b; --surface: #ffffff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: "Noto Sans JP", "Noto Sans", sans-serif; font-weight: 400; line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+    .page { width: min(880px, calc(100% - 32px)); margin: 0 auto; padding: 44px 0 72px; }
+    .back { display: inline-block; margin-bottom: 44px; color: var(--muted); font-size: 14px; }
+    h1 { margin: 0 0 32px; font-size: 36pt; font-weight: 400; line-height: 1.3; letter-spacing: 0; }
+    .shopify-box { margin-bottom: 24px; border: 2px solid var(--line); background: var(--surface); padding: 22px; }
+    .shopify-box p { margin: 0 0 16px; color: var(--muted); }
+    .dummy-button { display: inline-block; border: 2px solid var(--line); padding: 10px 18px; background: var(--bg); }
+    .dummy-button:hover { background: #eeeeea; }
+    .plans { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+    .plan { border: 2px solid var(--line); background: var(--surface); padding: 22px; }
+    .plan-title { display: block; margin-bottom: 8px; font-size: 22px; font-weight: 400; }
+    .plan span { color: var(--muted); }
+    @media (max-width: 760px) { h1 { font-size: 34px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="index.html">← メインページへ戻る</a>
+    <h1>支援プラン</h1>
+    <div class="shopify-box">
+      <p>支援の受付先としてShopifyを検討中です。公開時には、この仮ボタンをShopifyの商品ページまたは購入ページへのリンクに差し替えます。</p>
+      <a class="dummy-button" href="#" aria-disabled="true">Shopifyで支援する（準備中）</a>
+    </div>
+    <ul class="plans">
+      <li class="plan"><span class="plan-title">500yen プラン</span><span>千島維持協力に感謝</span></li>
+      <li class="plan"><span class="plan-title">1500yen プラン</span><span>千島維持協力 / 年間5日の宿泊可能</span></li>
+      <li class="plan"><span class="plan-title">2000yen プラン</span><span>千島維持協力 / 1か月前からの予約が可能 / 年間15日の宿泊可能</span></li>
+      <li class="plan"><span class="plan-title">3000yen プラン</span><span>千島維持協力 / 年間30日の宿泊可能 / 3か月前からの予約が可能 / 年間冊子の送付</span></li>
+      <li class="plan"><span class="plan-title">5000yen プラン</span><span>千島維持協力 / 年間60日の宿泊可能 / 6か月前からの予約が可能 / 年間冊子の送付冊数要相談</span></li>
+    </ul>
+  </main>
+</body>
+</html>
