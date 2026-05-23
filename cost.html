@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>宿泊費 | 千島project</title>
+  <title>利用費 | 千島project</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap" rel="stylesheet">
@@ -16,26 +16,43 @@
     .back { display: inline-block; margin-bottom: 44px; color: var(--muted); font-size: 14px; }
     h1 { margin: 0 0 32px; font-size: 36pt; font-weight: 400; line-height: 1.3; letter-spacing: 0; }
     .box { border: 2px solid var(--line); background: var(--surface); padding: 28px; }
-    .cost-list { margin: 0; padding-left: 1.2em; }
-    .cost-list li { margin-bottom: 10px; }
+    .price-table { width: 100%; border-collapse: collapse; margin: 0 0 24px; }
+    .price-table th, .price-table td { border: 2px solid var(--line); padding: 14px; text-align: left; vertical-align: top; }
+    .price-table th { background: var(--bg); font-weight: 400; }
+    .price-table td:not(:first-child), .price-table th:not(:first-child) { text-align: center; }
+    .small { display: block; color: var(--muted); font-size: 13px; line-height: 1.5; }
     .note { margin: 24px 0 0; color: var(--muted); }
-    @media (max-width: 760px) { h1 { font-size: 34px; } }
+    @media (max-width: 760px) { h1 { font-size: 34px; } .price-table th, .price-table td { padding: 10px; font-size: 14px; } }
   </style>
 </head>
 <body>
   <main class="page">
     <a class="back" href="index.html">← メインページへ戻る</a>
-    <h1>宿泊費</h1>
+    <h1>利用費</h1>
     <div class="box">
-      <ul class="cost-list">
-        <li>wifi 協力金 300円（1滞在分）</li>
-        <li>一泊 1500円</li>
-        <li>2泊以降は 1000円</li>
-        <li>上限 10000円</li>
-        <li>連泊は基本1週間まで</li>
-        <li>それ以上は長期滞在プラン</li>
-      </ul>
-      <p class="note">長期滞在や冊子送付数は、必要に応じて個別相談として扱います。</p>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>区分</th>
+            <th>会員</th>
+            <th>同行者<span class="small">1会員あたり5人まで同行可能</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>一泊あたり</td>
+            <td>1500円</td>
+            <td>1500円</td>
+          </tr>
+          <tr>
+            <td>二泊目以降</td>
+            <td>1000円</td>
+            <td>1200円</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>滞在は基本的に1週間までです。</p>
+      <p class="note">それ以上の滞在は長期滞在プランとして、個別にご相談ください。</p>
     </div>
   </main>
 </body>
