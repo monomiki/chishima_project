@@ -34,6 +34,21 @@
       text-decoration: none;
     }
 
+    .login-link {
+      position: fixed;
+      top: 22px;
+      right: 24px;
+      z-index: 10;
+      border: 2px solid var(--line);
+      background: var(--surface);
+      padding: 8px 18px;
+      transition: background 160ms ease;
+    }
+
+    .login-link:hover {
+      background: #eeeeea;
+    }
+
     .page {
       display: grid;
       align-content: center;
@@ -84,6 +99,12 @@
     }
 
     @media (max-width: 760px) {
+      .login-link {
+        position: static;
+        display: inline-block;
+        margin: 16px 16px 0 auto;
+      }
+
       h1 {
         font-size: 34px;
       }
@@ -95,6 +116,7 @@
   </style>
 </head>
 <body>
+  <a class="login-link" href="login.html">ログイン</a>
   <main class="page">
     <h1>千島project</h1>
     <nav aria-label="ページ一覧">
