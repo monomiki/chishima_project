@@ -25,9 +25,10 @@
     .calculator { margin-top: 32px; padding-top: 28px; border-top: 2px solid var(--line); }
     .calculator h2 { margin: 0 0 6px; font-size: 24px; font-weight: 400; }
     .calculator-intro { margin: 0 0 20px; color: var(--muted); }
-    .calculator-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .calculator-fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; max-width: 480px; }
+    .calculator-field { min-width: 0; }
     .calculator-field label { display: block; margin-bottom: 6px; }
-    .calculator-field input, .calculator-field select { width: 100%; min-height: 44px; padding: 8px 10px; border: 2px solid var(--line); border-radius: 0; background: var(--surface); color: var(--text); font: inherit; }
+    .calculator-field input, .calculator-field select { display: block; width: 100%; min-width: 0; max-width: 100%; min-height: 44px; padding: 8px 10px; border: 2px solid var(--line); border-radius: 0; background: var(--surface); color: var(--text); font: inherit; }
     .calculator-wifi { display: flex; align-items: center; gap: 10px; margin-top: 18px; cursor: pointer; }
     .calculator-wifi input { width: 20px; height: 20px; margin: 0; accent-color: var(--text); }
     .calculator-hint { margin: 16px 0 0; color: var(--muted); font-size: 13px; }
@@ -39,7 +40,7 @@
     .calculator-breakdown div { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 8px 0; }
     .calculator-breakdown dt, .calculator-breakdown dd { margin: 0; }
     .calculator-breakdown dd { white-space: nowrap; }
-    @media (max-width: 760px) { h1 { font-size: 34px; } .price-table th, .price-table td { padding: 10px; font-size: 14px; } .calculator-fields { grid-template-columns: 1fr; } }
+    @media (max-width: 760px) { h1 { font-size: 34px; } .price-table th, .price-table td { padding: 10px; font-size: 14px; } }
   </style>
 </head>
 <body>
