@@ -36,8 +36,9 @@
     .calculator-result[hidden], .calculator-message[hidden] { display: none; }
     .calculator-total { margin: 0 0 16px; font-size: 24px; }
     .calculator-breakdown { margin: 0; }
-    .calculator-breakdown div { display: flex; justify-content: space-between; gap: 16px; padding: 6px 0; }
+    .calculator-breakdown div { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 8px 0; }
     .calculator-breakdown dt, .calculator-breakdown dd { margin: 0; }
+    .calculator-breakdown dd { white-space: nowrap; }
     @media (max-width: 760px) { h1 { font-size: 34px; } .price-table th, .price-table td { padding: 10px; font-size: 14px; } .calculator-fields { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -67,8 +68,8 @@
           </tr>
         </tbody>
       </table>
-      <p>Wi-Fiを利用する場合は、1滞在あたり300円を協力金としていただきます。</p>
-      <p>7月15日〜9月25日と11月1日〜3月31日は、1日あたり150円の冷暖房費をいただきます。</p>
+      <p>Wi-Fiを利用する場合は、1人1滞在あたり300円を協力金としていただきます。</p>
+      <p>7月15日〜9月25日と11月1日〜3月31日は、1人1日あたり150円の冷暖房費をいただきます。</p>
       <p>滞在は基本的に1週間までです。</p>
       <p class="note">それ以上の滞在は長期滞在プランとして、個別にご相談ください。</p>
       <section class="calculator" aria-labelledby="calculator-title">
@@ -95,16 +96,15 @@
             </select>
           </div>
         </div>
-        <label class="calculator-wifi" for="wifi"><input id="wifi" type="checkbox">Wi-Fiを利用する（1滞在300円）</label>
+        <label class="calculator-wifi" for="wifi"><input id="wifi" type="checkbox">Wi-Fiを利用する（1人1滞在300円）</label>
         <p class="calculator-hint">宿泊日を基準に計算します。チェックアウト日は含みません。</p>
         <p class="calculator-message" id="calculator-message" role="status">日付を選ぶと概算が表示されます。</p>
         <div class="calculator-result" id="calculator-result" aria-live="polite" hidden>
           <p class="calculator-total">合計 <strong id="total-cost"></strong></p>
           <dl class="calculator-breakdown">
-            <div><dt id="member-label">会員1名</dt><dd id="member-cost"></dd></div>
-            <div><dt id="companion-label">同行者0名</dt><dd id="companion-cost"></dd></div>
-            <div><dt>Wi-Fi</dt><dd id="wifi-cost"></dd></div>
-            <div><dt id="season-label">冷暖房費</dt><dd id="season-cost"></dd></div>
+            <div><dt><span id="member-label">会員1名</span><span class="small" id="member-detail"></span></dt><dd id="member-cost"></dd></div>
+            <div><dt><span id="companion-label">同行者1名あたり</span><span class="small" id="companion-detail"></span></dt><dd id="companion-cost"></dd></div>
+            <div><dt id="companions-label">同行者0名分</dt><dd id="companions-cost"></dd></div>
           </dl>
         </div>
       </section>
@@ -154,23 +154,27 @@
         }
 
         const count = Number(companions.value);
-        const memberCost = 2000 + (nights - 1) * 1500;
-        const companionCost = count * (2500 + (nights - 1) * 2000);
-        const wifiCost = wifi.checked ? 300 : 0;
+        const memberStay = 2000 + (nights - 1) * 1500;
+        const companionStay = 2500 + (nights - 1) * 2000;
+        const wifiPerPerson = wifi.checked ? 300 : 0;
         let seasonalDays = 0;
         for (let i = 0; i < nights; i++) {
           if (isSeasonalDay(new Date(start.getTime() + i * dayMs))) seasonalDays++;
         }
-        const seasonCost = seasonalDays * 150;
+        const seasonPerPerson = seasonalDays * 150;
+        const memberCost = memberStay + wifiPerPerson + seasonPerPerson;
+        const companionCost = companionStay + wifiPerPerson + seasonPerPerson;
+        const companionsCost = count * companionCost;
 
-        document.getElementById("total-cost").textContent = yen(memberCost + companionCost + wifiCost + seasonCost);
+        document.getElementById("total-cost").textContent = yen(memberCost + companionsCost);
         document.getElementById("member-label").textContent = `会員1名（${nights}泊）`;
+        document.getElementById("member-detail").textContent = `宿泊${yen(memberStay)} + Wi-Fi${yen(wifiPerPerson)} + 冷暖房${yen(seasonPerPerson)}`;
         document.getElementById("member-cost").textContent = yen(memberCost);
-        document.getElementById("companion-label").textContent = `同行者${count}名（${nights}泊）`;
+        document.getElementById("companion-label").textContent = `同行者1名あたり（${nights}泊）`;
+        document.getElementById("companion-detail").textContent = `宿泊${yen(companionStay)} + Wi-Fi${yen(wifiPerPerson)} + 冷暖房${yen(seasonPerPerson)}`;
         document.getElementById("companion-cost").textContent = yen(companionCost);
-        document.getElementById("wifi-cost").textContent = yen(wifiCost);
-        document.getElementById("season-label").textContent = `冷暖房費（対象${seasonalDays}日）`;
-        document.getElementById("season-cost").textContent = yen(seasonCost);
+        document.getElementById("companions-label").textContent = `同行者${count}名分`;
+        document.getElementById("companions-cost").textContent = yen(companionsCost);
         message.hidden = true;
         result.hidden = false;
       }
